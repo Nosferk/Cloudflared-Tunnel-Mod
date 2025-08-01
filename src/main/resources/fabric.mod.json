@@ -1,0 +1,41 @@
+{
+	"schemaVersion": 1,
+	"id": "cloudflared-tunnel",
+	"version": "${version}",
+	"name": "Cloudflared Tunnel",
+	"description": "Create a Cloudflare Tunnel to connect to a Minecraft server",
+	"authors": [
+		"Nosferk"
+	],
+	"contact": {
+		"homepage": "https://fabricmc.net/",
+		"sources": "https://github.com/Nosferk/Cloudflared-Tunnel-Mod"
+	},
+	"license": "CC0-1.0",
+	"icon": "assets/cloudflared-tunnel/icon.png",
+	"environment": "*",
+	"entrypoints": {
+		"main": [
+			"com.nosferk.cloudflaredtunnel.CloudflaredTunnel"
+		],
+		"client": [
+			"com.nosferk.cloudflaredtunnel.CloudflaredTunnelClient"
+		]
+	},
+	"mixins": [
+		"cloudflared-tunnel.mixins.json",
+		{
+			"config": "cloudflared-tunnel.client.mixins.json",
+			"environment": "client"
+		}
+	],
+	"depends": {
+		"fabricloader": ">=0.16.14",
+		"minecraft": "~1.21.8",
+		"java": ">=21",
+		"fabric-api": "*"
+	},
+	"suggests": {
+		"another-mod": "*"
+	}
+}

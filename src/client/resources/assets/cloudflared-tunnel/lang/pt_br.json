@@ -1,0 +1,10 @@
+{
+  "cloudflared-tunnel.config.title": "Configurações do Cloudflared Tunnel",
+  "cloudflared-tunnel.config.hostname": "Hostname:",
+  "cloudflared-tunnel.config.use_random_port": "Usar porta aleatória",
+  "cloudflared-tunnel.config.fixed_port": "Porta fixa:",
+  "cloudflared-tunnel.config.auto_add_server": "Adicionar servidor automaticamente",
+  "cloudflared-tunnel.config.server_name": "Nome do servidor:",
+  "cloudflared-tunnel.config.save": "Salvar",
+  "cloudflared-tunnel.config.cancel": "Cancelar"
+}
