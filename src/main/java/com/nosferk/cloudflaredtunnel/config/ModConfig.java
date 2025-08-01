@@ -16,7 +16,7 @@ public class ModConfig {
     // Configurações padrão
     public boolean useRandomPort = true;
     public int fixedPort = 25565;
-    public String hostname = "play.nosferk.com";
+    public String hostname = "play.exemple.com";
     public boolean autoAddToServerList = true;
     public String serverName = "Nosferk";
     
@@ -42,7 +42,7 @@ public class ModConfig {
             
             config.useRandomPort = Boolean.parseBoolean(props.getProperty("useRandomPort", "true"));
             config.fixedPort = Integer.parseInt(props.getProperty("fixedPort", "25565"));
-            config.hostname = props.getProperty("hostname", "play.nosferk.com");
+            config.hostname = props.getProperty("hostname", "play.exemple.com");
             config.autoAddToServerList = Boolean.parseBoolean(props.getProperty("autoAddToServerList", "true"));
             config.serverName = props.getProperty("serverName", "Nosferk");
             
