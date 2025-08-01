@@ -1,5 +1,6 @@
 package com.nosferk.cloudflaredtunnel;
-
+//Copyright (c) 2025 Nosferk
+//Attribution-NonCommercial-NoDerivatives 4.0 International
 import com.nosferk.cloudflaredtunnel.config.ModConfig;
 import net.fabricmc.api.ModInitializer;
 import org.slf4j.Logger;

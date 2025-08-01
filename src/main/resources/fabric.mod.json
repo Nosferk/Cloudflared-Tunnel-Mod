@@ -8,10 +8,10 @@
 		"Nosferk"
 	],
 	"contact": {
-		"homepage": "https://fabricmc.net/",
+		"homepage": "https://nosferk.com/projects/cloudflared-tunnel",
 		"sources": "https://github.com/Nosferk/Cloudflared-Tunnel-Mod"
 	},
-	"license": "CC0-1.0",
+	"license": "Attribution-NonCommercial-NoDerivatives 4.0 International",
 	"icon": "assets/cloudflared-tunnel/icon.png",
 	"environment": "*",
 	"entrypoints": {

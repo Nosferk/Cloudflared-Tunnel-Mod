@@ -19,7 +19,6 @@ public abstract class TitleScreenMixin extends Screen {
     
     @Inject(method = "init", at = @At("RETURN"))
     private void addConfigButton(CallbackInfo ci) {
-        // Adiciona botão de configuração no canto inferior direito
         ButtonWidget configButton = ButtonWidget.builder(
                 Text.literal("Tunnel Config"),
                 button -> {

@@ -9,14 +9,12 @@ import net.minecraft.client.option.ServerList;
 public class CloudflaredTunnelClient implements ClientModInitializer {
 	@Override
 	public void onInitializeClient() {
-		// Aguarda um pouco para garantir que o tunnel seja iniciado primeiro
 		new Thread(() -> {
 			try {
 				Thread.sleep(3000); // 3 segundos de delay
 				
 				ModConfig config = ModConfig.getInstance();
 				
-				// Só adiciona servidor se estiver habilitado na configuração
 				if (config.autoAddToServerList) {
 					int port = CloudflaredTunnel.getTunnelPort();
 					if (port > 0) {
@@ -41,7 +39,6 @@ public class CloudflaredTunnelClient implements ClientModInitializer {
             }
         }
 
-        // Em 1.21.x o construtor agora pede um tipo usando enum interno ServerInfo.Type
         ServerInfo serverInfo = new ServerInfo(
                 name,
                 address,

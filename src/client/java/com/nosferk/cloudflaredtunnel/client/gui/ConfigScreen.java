@@ -45,7 +45,6 @@ public class ConfigScreen extends Screen {
     }
     
     private void renderConfigTab(int centerX, int startY, int spacing, int fieldWidth) {
-        // Hostname
         this.addDrawableChild(ButtonWidget.builder(
                 Text.literal("Hostname:"),
                 button -> {})
@@ -59,7 +58,6 @@ public class ConfigScreen extends Screen {
         
         startY += spacing;
         
-        // Checkbox para porta aleatória
         useRandomPortCheckbox = CheckboxWidget.builder(Text.literal("Usar porta aleatória"), this.textRenderer)
                 .pos(centerX - fieldWidth/2, startY)
                 .checked(config.useRandomPort)
@@ -68,7 +66,6 @@ public class ConfigScreen extends Screen {
         
         startY += spacing;
         
-        // Campo de porta fixa
         this.addDrawableChild(ButtonWidget.builder(
                 Text.literal("Porta fixa:"),
                 button -> {})
@@ -83,7 +80,6 @@ public class ConfigScreen extends Screen {
         
         startY += spacing;
         
-        // Checkbox para adicionar ao servidor automaticamente
         autoAddServerCheckbox = CheckboxWidget.builder(Text.literal("Adicionar servidor automaticamente"), this.textRenderer)
                 .pos(centerX - fieldWidth/2, startY)
                 .checked(config.autoAddToServerList)
@@ -92,7 +88,6 @@ public class ConfigScreen extends Screen {
         
         startY += spacing;
         
-        // Nome do servidor
         this.addDrawableChild(ButtonWidget.builder(
                 Text.literal("Nome do servidor:"),
                 button -> {})
@@ -107,7 +102,6 @@ public class ConfigScreen extends Screen {
         
         startY += spacing * 2;
         
-        // Botões de ação
         this.addDrawableChild(ButtonWidget.builder(
                 Text.literal("Salvar"),
                 button -> this.save())
@@ -131,14 +125,12 @@ public class ConfigScreen extends Screen {
         int centerX = this.width / 2;
         int startY = 50;
         
-        // Botão para atualizar saída
         this.addDrawableChild(ButtonWidget.builder(
                 Text.literal("Atualizar"),
                 button -> {})
                 .dimensions(centerX - 50, startY, 100, 20)
                 .build());
         
-        // Botões de scroll
         this.addDrawableChild(ButtonWidget.builder(
                 Text.literal("↑"),
                 button -> {
@@ -157,7 +149,6 @@ public class ConfigScreen extends Screen {
                 .dimensions(this.width - 30, startY + 55, 20, 20)
                 .build());
         
-        // Botão para fechar
         this.addDrawableChild(ButtonWidget.builder(
                 Text.literal("Fechar"),
                 button -> this.close())
@@ -170,7 +161,6 @@ public class ConfigScreen extends Screen {
         super.tick();
         
         if (!showOutputTab) {
-            // Atualiza a habilitação dos campos baseado nas checkboxes
             if (fixedPortField != null) {
                 fixedPortField.setEditable(!useRandomPortCheckbox.isChecked());
             }
@@ -193,22 +183,19 @@ public class ConfigScreen extends Screen {
                 if (port > 0 && port <= 65535) {
                     config.fixedPort = port;
                 } else {
-                    // Porta inválida, manter a anterior
                     fixedPortField.setText(String.valueOf(config.fixedPort));
                 }
             }
             
             config.save();
         } catch (NumberFormatException e) {
-            // Porta inválida, manter a anterior
             fixedPortField.setText(String.valueOf(config.fixedPort));
         }
     }
     
     private void reloadTunnel() {
-        save(); // Salva as configurações primeiro
+        save();
         
-        // Recarrega o tunnel em uma thread separada para não travar a UI
         new Thread(() -> {
             try {
                 CloudflaredTunnel.startTunnel();
@@ -227,10 +214,8 @@ public class ConfigScreen extends Screen {
     
     @Override
     public void render(DrawContext context, int mouseX, int mouseY, float delta) {
-        // Renderiza o fundo escuro
         context.fill(0, 0, this.width, this.height, 0x80000000);
         
-        // Título
         String title = showOutputTab ? "Saída do Cloudflared Tunnel" : "Configurações do Cloudflared Tunnel";
         context.drawCenteredTextWithShadow(this.textRenderer, Text.literal(title), this.width / 2, 35, 0xFFFFFF);
         
@@ -260,7 +245,6 @@ public class ConfigScreen extends Screen {
             y += 12;
         }
         
-        // Indicador de scroll
         if (log.size() > maxLines) {
             context.drawTextWithShadow(this.textRenderer, 
                 "Linha " + (startIndex + 1) + "-" + endIndex + " de " + log.size(), 
